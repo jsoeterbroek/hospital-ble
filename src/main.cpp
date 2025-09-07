@@ -10,6 +10,7 @@
 #include <TFT_eSPI.h>
 #endif
 
+#define LV_USE_LOG_PRINTF 1;
 static lv_obj_t *splash_label = NULL;
 
 // Set Touch Driver
@@ -88,7 +89,7 @@ void setup() {
   LVGL_Arduino += String('V') + lv_version_major() + "." + lv_version_minor() +
                   "." + lv_version_patch();
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println(LVGL_Arduino);
 
   lv_init();
