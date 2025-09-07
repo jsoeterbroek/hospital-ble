@@ -1,9 +1,16 @@
+// #include "BAT_Driver.h"
 #include "I2C_Driver.h"
 #include "PWR_Key.h"
 #include "ST7789.h"
 #include <Arduino.h>
 
 #define LED_PIN 33
+
+void Driver_Init(void) {
+  PWR_Init();
+  // BAT_Init();
+  I2C_Init();
+}
 
 static lv_obj_t *splash_label = NULL;
 
@@ -20,6 +27,7 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
 
   // Initialize hardware and LVGL
+  Driver_Init();
   LCD_Init();  // initializes SPI, panel and touch
   LVGL_Init(); // initializes lvgl, display driver and tick timer
 
@@ -32,10 +40,4 @@ void setup() {
 void loop() {
   // Let LVGL handle tasks (timers, animations, redraws)
   lv_timer_handler();
-
-  // Simple LED blink to show the MCU is alive
-  digitalWrite(LED_PIN, HIGH);
-  delay(200);
-  digitalWrite(LED_PIN, LOW);
-  delay(200);
 }
