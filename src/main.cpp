@@ -2,6 +2,14 @@
 #include "I2C_Driver.h"
 #include "PWR_Key.h"
 #include "ST7789.h"
+#ifdef __cplusplus
+extern "C" {
+void PWR_Init(void);
+void I2C_Init(void);
+void LCD_Init(void);
+void LVGL_Init(void);
+}
+#endif
 #include <Arduino.h>
 
 #define LED_PIN 33

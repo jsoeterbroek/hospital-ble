@@ -13,7 +13,6 @@
 #include "lvgl.h"
 #include <stdio.h>
 
-
 #include "CST328.h"
 #include "LVGL_Driver.h"
 // LCD SPI GPIO
@@ -52,6 +51,10 @@
 extern esp_lcd_panel_handle_t panel_handle;
 extern uint8_t LCD_Backlight;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void Backlight_Init(void); // Initialize the LCD backlight, which has been
                            // called in the LCD_Init function, ignore it
 void Set_Backlight(uint8_t Light); // Call this function to adjust the
@@ -60,3 +63,7 @@ void Set_Backlight(uint8_t Light); // Call this function to adjust the
 
 void LCD_Init(void); // Call this function to initialize the screen (must be
                      // called in the main function) !!!!!
+
+#ifdef __cplusplus
+}
+#endif
